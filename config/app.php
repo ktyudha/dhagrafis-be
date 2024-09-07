@@ -60,6 +60,7 @@ return [
     'frontend_url' => env('FRONTEND_URL', 'http://localhost:5173'),
 
     'asset_url' => env('ASSET_URL', 'http://localhost/storage'),
+    'api' => env('API_URL', false),
 
     /*
     |--------------------------------------------------------------------------

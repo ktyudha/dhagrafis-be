@@ -14,6 +14,8 @@
         "APP_ENV": "production",
         "APP_DEBUG": "true",
         "APP_URL": "https://dhagrafis-be.vercel.app",
+        "API_URL": "https://dhagrafis-be.vercel.app",
+        "APP_KEY": "base64:yWsPkIWbYzN9vDcH6byeUD0Tng5z+OM5l9J4hsSEwLE=",
 
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
