@@ -25,11 +25,11 @@ class HomeController extends Controller
     {
         $data['sliders']           = CarouselResource::collection(Slider::all());
         $data['galleries']         = GalleryResource::collection(Gallery::take('10')->get());
-        $data['services']          = Service::Service()->take('3')->get();
+        // $data['services']          = Service::Service()->take('3')->get();
         $data['keunggulan']        = Service::Keunggulan()->take('10')->latest()->get();
-        $data['about_info']        = Management::About()->first();
-        $data['contact_info']      = Management::Contact()->first();
-        $data['social_info']      = Management::Social()->get();
+        // $data['about_info']        = Management::About()->first();
+        // $data['contact_info']      = Management::Contact()->first();
+        // $data['social_info']      = Management::Social()->get();
 
         return response()->json([
             'status' => 'success',

@@ -153,7 +153,7 @@ Route::prefix('admin')->middleware('auth:sanctum')->name('admin.')->group(functi
 });
 
 
-Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/home', [HomeController::class, 'index'])->name('home.index');
 
 Route::apiResource('sliders', SliderController::class);
 Route::apiResource('services', ServiceController::class);
