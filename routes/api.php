@@ -44,9 +44,9 @@ use App\Http\Controllers\Website\Jobs\JobsController;
 */
 
 Route::prefix('auth')->group(function () {
-    // Route::get('me', [AuthController::class, 'me'])
-    //     ->middleware(['auth:sanctum', 'verified'])
-    //     ->name('auth.me');
+    Route::get('me', [AuthController::class, 'me'])
+        ->middleware(['auth:sanctum', 'verified'])
+        ->name('auth.me');
     // Route::post('register', [AuthController::class, 'register'])
     //     ->middleware(['guest'])
     //     ->name('auth.register');
@@ -57,7 +57,7 @@ Route::prefix('auth')->group(function () {
     //     ->middleware(['auth:sanctum', 'verified'])
     //     ->name('auth.logout');
 
-    // Route::post('profile', [AuthController::class, 'profile'])->name('auth.profile');
+    Route::post('profile', [AuthController::class, 'profile'])->name('auth.profile');
 
     // Route::post('verify-email/{id}/{hash}', [EmailVerificationController::class, 'verify'])
     //     ->middleware(['throttle:6,1'])
