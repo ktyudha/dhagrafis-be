@@ -22,49 +22,49 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
      */
-    // public function boot(): void
-    // {
-    //     RateLimiter::for('api', function (Request $request) {
-    //         return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
-    //     });
-
-    //     $this->routes(function () {
-    //         Route::middleware('api')
-    //             ->prefix('api')
-    //             ->group(base_path('routes/api.php'));
-
-    //         Route::middleware('web')
-    //             ->group(base_path('routes/web.php'));
-    //     });
-    // }
-
-    public function boot()
-    {
-        $this->configureRateLimiting();
-
-        $this->routes(function () {
-            if (!config('app.api')) {
-                Route::prefix('api')
-                    ->middleware('api')
-                    ->namespace($this->namespace)
-                    ->group(base_path('routes/api.php'));
-            } else {
-                Route::domain(config('app.api'))
-                    ->middleware('api')
-                    ->namespace($this->namespace)
-                    ->group(base_path('routes/api.php'));
-            }
-
-            Route::middleware('web')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/web.php'));
-        });
-    }
-
-    protected function configureRateLimiting()
+    public function boot(): void
     {
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
+
+        $this->routes(function () {
+            Route::middleware('api')
+                ->prefix('api')
+                ->group(base_path('routes/api.php'));
+
+            Route::middleware('web')
+                ->group(base_path('routes/web.php'));
+        });
     }
+
+    // public function boot()
+    // {
+    //     $this->configureRateLimiting();
+
+    //     $this->routes(function () {
+    //         if (!config('app.api')) {
+    //             Route::prefix('api')
+    //                 ->middleware('api')
+    //                 ->namespace($this->namespace)
+    //                 ->group(base_path('routes/api.php'));
+    //         } else {
+    //             Route::domain(config('app.api'))
+    //                 ->middleware('api')
+    //                 ->namespace($this->namespace)
+    //                 ->group(base_path('routes/api.php'));
+    //         }
+
+    //         Route::middleware('web')
+    //             ->namespace($this->namespace)
+    //             ->group(base_path('routes/web.php'));
+    //     });
+    // }
+
+    // protected function configureRateLimiting()
+    // {
+    //     RateLimiter::for('api', function (Request $request) {
+    //         return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
+    //     });
+    // }
 }
