@@ -55,12 +55,12 @@ class SliderController extends Controller
             'image' => 'required|image'
         ]);
 
-        // $path = $request->file('image')->store('slider');
+        $path = $request->file('image')->store('slider');
 
         $slider = new Slider($request->all());
 
-        $image = $slider->uploadImage($request->file('image'), 'ugc/sliders');
-        $slider->image = $image->lg;
+        // $image = $slider->uploadImage($request->file('image'), 'ugc/sliders');
+        $slider->image = $path;
 
 
         if ($slider->save()) {
