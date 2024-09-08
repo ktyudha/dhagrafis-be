@@ -1,20 +1,8 @@
-# CIRT-ENT
+# DHAGRAFIS-API
 
 How to install this project:
 
 ## Clonning from repo
-
-Using Http
-
-```bash
-git clone https://github.com/Webmaster-ENT/ent-cirt.git
-```
-
-Using SSH
-
-```bash
-git clone git@github.com:Webmaster-ENT/ent-cirt.git
-```
 
 ## Setup Project
 
@@ -49,13 +37,3 @@ php artisan migrate --seed
 ```bash
 php artisan serve
 ```
-
-## API Documentation
-
-You can view the api documentation at:
-[https://documenter.getpostman.com/view/19353108/2s9YsDkv2F](https://documenter.getpostman.com/view/19353108/2s9YsDkv2F)
-
-## Login
-
-username: admin@media.pens.ac.id <br>
-password: password
