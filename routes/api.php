@@ -44,27 +44,27 @@ use App\Http\Controllers\Website\Jobs\JobsController;
 */
 
 Route::prefix('auth')->group(function () {
-    Route::get('me', [AuthController::class, 'me'])
-        ->middleware(['auth:sanctum', 'verified'])
-        ->name('auth.me');
-    Route::post('register', [AuthController::class, 'register'])
-        ->middleware(['guest'])
-        ->name('auth.register');
+    // Route::get('me', [AuthController::class, 'me'])
+    //     ->middleware(['auth:sanctum', 'verified'])
+    //     ->name('auth.me');
+    // Route::post('register', [AuthController::class, 'register'])
+    //     ->middleware(['guest'])
+    //     ->name('auth.register');
     Route::post('login', [AuthController::class, 'login'])
         ->middleware(['throttle:6,1', 'guest'])
         ->name('auth.login');
-    Route::post('logout', [AuthController::class, 'logout'])
-        ->middleware(['auth:sanctum', 'verified'])
-        ->name('auth.logout');
+    // Route::post('logout', [AuthController::class, 'logout'])
+    //     ->middleware(['auth:sanctum', 'verified'])
+    //     ->name('auth.logout');
 
-    Route::post('profile', [AuthController::class, 'profile'])->name('auth.profile');
+    // Route::post('profile', [AuthController::class, 'profile'])->name('auth.profile');
 
-    Route::post('verify-email/{id}/{hash}', [EmailVerificationController::class, 'verify'])
-        ->middleware(['throttle:6,1'])
-        ->name('verification.verify');
-    Route::post('email/verification-notification/{id}', [EmailVerificationController::class, 'notification'])
-        ->middleware(['throttle:6,1'])
-        ->name('verification.notification');
+    // Route::post('verify-email/{id}/{hash}', [EmailVerificationController::class, 'verify'])
+    //     ->middleware(['throttle:6,1'])
+    //     ->name('verification.verify');
+    // Route::post('email/verification-notification/{id}', [EmailVerificationController::class, 'notification'])
+    //     ->middleware(['throttle:6,1'])
+    //     ->name('verification.notification');
 });
 
 // Route::get('articles', [ArticleController::class, 'index'])->name('articles.index');
@@ -80,27 +80,27 @@ Route::prefix('auth')->group(function () {
 // Route::get('latest-articles', LatestArticleController::class)->name('articles.latest');
 
 Route::prefix('admin')->middleware('auth:sanctum')->name('admin.')->group(function () {
-    Route::apiResource('categories', AdminCategoryController::class);
-    Route::apiResource('articles', AdminArticleController::class)
-        ->scoped(['article' => 'slug']);
-    Route::prefix('articles')->name('articles.')->group(function () {
-        Route::put('{article:slug}/publish', [AdminArticleController::class, 'publish'])->name('publish');
-        Route::put('{article:slug}/unpublish', [AdminArticleController::class, 'unpublish'])->name('unpublish');
-    });
+    // Route::apiResource('categories', AdminCategoryController::class);
+    // Route::apiResource('articles', AdminArticleController::class)
+    //     ->scoped(['article' => 'slug']);
+    // Route::prefix('articles')->name('articles.')->group(function () {
+    //     Route::put('{article:slug}/publish', [AdminArticleController::class, 'publish'])->name('publish');
+    //     Route::put('{article:slug}/unpublish', [AdminArticleController::class, 'unpublish'])->name('unpublish');
+    // });
 
-    Route::apiResource('artworks', AdminArtworkController::class)
-        ->scoped(['artwork' => 'slug']);
-    Route::prefix('artworks')->name('artworks.')->group(function () {
-        Route::put('{artwork:slug}/publish', [AdminArtworkController::class, 'publish'])->name('publish');
-        Route::put('{artwork:slug}/unpublish', [AdminArtworkController::class, 'unpublish'])->name('unpublish');
-    });
+    // Route::apiResource('artworks', AdminArtworkController::class)
+    //     ->scoped(['artwork' => 'slug']);
+    // Route::prefix('artworks')->name('artworks.')->group(function () {
+    //     Route::put('{artwork:slug}/publish', [AdminArtworkController::class, 'publish'])->name('publish');
+    //     Route::put('{artwork:slug}/unpublish', [AdminArtworkController::class, 'unpublish'])->name('unpublish');
+    // });
 
-    Route::apiResource('events', AdminEventController::class)
-        ->scoped(['event' => 'slug']);
-    Route::prefix('events')->name('events.')->group(function () {
-        Route::put('{event:slug}/publish', [AdminArtworkController::class, 'publish'])->name('publish');
-        Route::put('{event:slug}/unpublish', [AdminArtworkController::class, 'unpublish'])->name('unpublish');
-    });
+    // Route::apiResource('events', AdminEventController::class)
+    //     ->scoped(['event' => 'slug']);
+    // Route::prefix('events')->name('events.')->group(function () {
+    //     Route::put('{event:slug}/publish', [AdminArtworkController::class, 'publish'])->name('publish');
+    //     Route::put('{event:slug}/unpublish', [AdminArtworkController::class, 'unpublish'])->name('unpublish');
+    // });
 
     Route::apiResource('roles', RoleController::class);
     Route::get('permissions', PermissionController::class);

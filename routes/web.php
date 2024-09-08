@@ -17,9 +17,6 @@ use Illuminate\Support\Facades\Artisan;
 Route::get('/', function () {
     return ['Laravel' => app()->version()];
 });
-Route::get('/halo', function () {
-    return "Halo";
-});
 
 // clear cache di shared hosting
 Route::get('/clear', function () {
